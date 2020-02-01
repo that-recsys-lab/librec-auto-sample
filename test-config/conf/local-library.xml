@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<librec-auto-library>
+
+	<alg name="itemknn50">
+		<class>itemknn</class>
+		<similarity type="item">pcc</similarity>
+		<neighborhood-size>50</neighborhood-size>
+		<shrinkage>50</shrinkage>
+	</alg>
+
+</librec-auto-library>

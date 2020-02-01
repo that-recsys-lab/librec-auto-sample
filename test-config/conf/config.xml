@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<librec-auto>
+	<!-- LIBRARY SECTION -->
+	<library src="system">default-library.xml</library>
+	<library>local-library.xml</library>
+	
+	<random-seed>201807</random-seed>
+	<thread-count>1</thread-count>
+	<!-- PATH SECTION -->
+	<path>
+		<data>demo/data</data>
+		<result>result</result>
+		<log>log</log>
+	</path>
+	<!-- DATA SECTION -->
+	<data>
+		<format>UIR</format>
+		<train-file format="text">filmtrust.txt</train-file>
+		<binarize-threshold>-1.0</binarize-threshold>
+	</data>
+	<!-- SPLITTER SECTION -->
+	<splitter>
+		<model count="5">kcv</model>
+		<dim>userfixed</dim>
+		<ratio>0.8</ratio>
+		<save>true</save>
+	</splitter>
+	
+	<!-- ALGORITHM SECTION -->
+	<alg ref="alg:biasedmf">
+		<num-factors>
+			<value>10</value>
+			<value>20</value>
+		</num-factors>
+	</alg>
+	
+	<!-- METRICS SECTION -->
+	<metric ref="metric:ndcg10">
+		<list-size>5</list-size>
+	</metric>
+	
+	<!-- RERANK SECTION -->
+	<rerank action="no-parse">
+		<script lang="python3" src="system">
+			<script-name>no-op-rerank.py</script-name>
+			<param name="max_len">5</param>
+			<param name="another_param">0.4</param>
+		</script>
+	</rerank>
+	
+	<!-- POST-PROCESSING SECTION -->
+	<post action='no-parse'>
+		<script lang="python3" src="system">
+			<script-name>dummy-post.py</script-name>
+			<param name="param0">0.34</param>
+		</script>
+		<script lang="python3" src="system">
+			<script-name>dummy-post.py</script-name>
+			<param name="param0">ABC</param>
+			<param name="param1">\"sic transit gloria mundi\"</param>
+		</script>
+	</post>
+	
+</librec-auto>
