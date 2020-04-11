@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- Configuration file for kiva-experimentation 
+	 Extra: Probabilistic latent semantic analysis -->
+
+<librec-auto>
+	<random-seed>202001</random-seed>
+	<thread-count>1</thread-count>
+	
+	<!-- PATH SECTION -->
+	<path>
+		<data>../kiva-experimentation/data</data>
+		<result>result</result>
+		<log>log</log>
+	</path>
+	
+	<!-- DATA SECTION -->
+	<data>
+		<format>UIR</format>
+		<data-file format="text">rating_5000_cls_hc_10core_iterative.csv</data-file>
+	</data>
+	
+	<!-- SPLITTER SECTION -->
+	<splitter>
+		<model count="5">kcv</model>
+		<dim>userfixed</dim>
+		<ratio>0.8</ratio>
+		<save>true</save>
+	</splitter>
+	
+	<!-- ALGORITHM SECTION -->
+	<alg>
+		<class>itemknn</class>
+		<!-- similarity>cos</similarity>
+		<similarity type="*">item</similarity -->
+		<similarity type="item">
+                        <value>cos</value>
+                        <value>pcc</value>
+                </similarity>
+		<learn-rate>0.01</learn-rate>
+		<iterator-max>100</iterator-max>
+		<neighborhood-size>
+			<value>50</value>
+			<value>100</value>
+			<value>200</value>
+		</neighborhood-size>
+		<shrinkage>
+			<value>1</value>
+			<value>10</value>
+			<value>20</value>
+		</shrinkage>
+	</alg> 
+
+	<!-- METRICS SECTION -->
+	<metric>
+		<ranking>true</ranking>
+		<list-size>10</list-size>
+		<class>precision,recall,ndcg</class>
+	</metric>
+	
+	<!-- POST-PROCESSING SECTION -->
+	<post action='no-parse'>
+		<script lang="python3" src="system">
+			<script-name>result-graphics.py</script-name>
+			<param name="browser">True</param>
+		</script>
+	</post> 
+</librec-auto>
