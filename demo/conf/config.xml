@@ -15,6 +15,11 @@
 		<train-file format="text">filmtrust.txt</train-file>
 		<binarize-threshold>-1.0</binarize-threshold>
 	</data>
+	<!-- FEATURES SECTION -->
+	<features>
+		<appender-class>net.librec.data.convertor.appender.ItemFeatureAppender</appender-class>
+		<item-feature-file>item-features.csv</item-feature-file>
+	</features>
 	<!-- SPLITTER SECTION -->
 	<splitter>
 		<model count="5">kcv</model>
@@ -22,7 +27,7 @@
 		<ratio>0.8</ratio>
 		<save>true</save>
 	</splitter>
-	
+
 	<!-- ALGORITHM SECTION -->
 	<alg>
 		<class>biasedmf</class>
@@ -39,35 +44,71 @@
 			<value>20</value>
 		</num-factors>
 	</alg>
+
 	
-	<!-- METRICS SECTION -->
+<!--	 METRICS SECTION -->
+<!--	<metric>-->
+<!--		<ranking>true</ranking>-->
+<!--		<class>recall</class>-->
+<!--		<class>precision</class>-->
+<!--		<class>ndcg</class>-->
+<!--		<list-size>10</list-size>-->
+<!--	</metric>-->
+<!--	 METRICS SECTION -->
 	<metric>
 		<ranking>true</ranking>
-		<class>recall</class>
-		<class>precision</class>
-		<class>ndcg</class>
-		<list-size>10</list-size>
+		<list-size>50</list-size>
+		<class>net.librec.eval.ranking.StatisticalParityEvaluator,net.librec.eval.ranking.DiscountedProportionalPFairnessEvaluator,precision,recall</class>
+		<protected-feature>new</protected-feature>
 	</metric>
 	
-	<!-- RERANK SECTION -->
+<!--	 RERANK SECTION -->
 	<rerank action="no-parse">
+<!--		<script lang="python3" src="system">-->
+<!--			<script-name>no-op-rerank.py</script-name>-->
+<!--			<param name="max_len">5</param>-->
+<!--			<param name="another_param">0.4</param>-->
+<!--		</script>-->
 		<script lang="python3" src="system">
-			<script-name>no-op-rerank.py</script-name>
+			<script-name>far-rerank.py</script-name>
 			<param name="max_len">5</param>
-			<param name="another_param">0.4</param>
+			<param name="lambda">0.5</param>
+			<param name="binary">False</param>
 		</script>
 	</rerank>
 	
 	<!-- POST-PROCESSING SECTION -->
 	<post action='no-parse'>
 		<script lang="python3" src="system">
-			<script-name>dummy-post.py</script-name>
-			<param name="param0">0.34</param>
+			<script-name>slack-post.py</script-name>
+			<param name="option">No</param>
+			<param name="channel">#la_bot</param>
+			<param name="decrypted_file">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/Key_API.txt.decrypted</param>
+			<param name="encrypted_file">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-sample-master/demo/data/API/Key_API.txt.encrypted</param>
+			<param name="key">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/key.key</param>
+			<param name="information">Here is the graphics post</param>
 		</script>
 		<script lang="python3" src="system">
-			<script-name>dummy-post.py</script-name>
-			<param name="param0">ABC</param>
-			<param name="param1">\"sic transit gloria mundi\"</param>
+			<script-name>result-graphics.py</script-name>
+			<param name="channel">#la_bot</param>
+			<param name="decrypted_file">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/Key_API.txt.decrypted</param>
+			<param name="encrypted_file">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-sample-master/demo/data/API/Key_API.txt.encrypted</param>
+			<param name="key">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/key.key</param>
+			<param name="decrypted_Dropbox_file">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/Key_API_Dropbox.txt.decrypted</param>
+			<param name="encrypted_Dropbox_file">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-sample-master/demo/data/API/Key_API_Dropbox.txt.encrypted</param>
+		</script>
+		<script lang="python3" src="system">
+			<script-name>dropbox-post.py</script-name>
+			<param name="option">folder</param>
+			<param name="decrypted_Dropbox_file">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/Key_API_Dropbox.txt.decrypted</param>
+			<param name="encrypted_Dropbox_file">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-sample-master/demo/data/API/Key_API_Dropbox.txt.encrypted</param>
+			<param name="key">/Users/liuzijun1/Desktop/Librec-auto/Identity_Key/key.key</param>
+			<param name="repository">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-sample-master/demo/post</param>
+		</script>
+		<script lang="python3" src="system">
+			<script-name>extract-params.py</script-name>
+			<param name="choice">both</param>
+			<param name="repository">/Users/liuzijun1/Desktop/Librec-auto/librec-auto-library/librec_auto</param>
 		</script>
 	</post>
 	
