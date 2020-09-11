@@ -1,0 +1,70 @@
+20/04/23 17:01:50 INFO TextDataConvertor: Dataset: raw_librec/data/UIR_raw_split.csv
+20/04/23 17:01:50 INFO TextDataConvertor: All dataset files [raw_librec\data\UIR_raw_split.csv]
+20/04/23 17:01:50 INFO TextDataConvertor: All dataset files size 11656347
+20/04/23 17:01:50 INFO TextDataConvertor: Now loading dataset file UIR_raw_split
+20/04/23 17:01:52 INFO TextDataModel: Transform data to Convertor successfully!
+20/04/23 17:01:53 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:53 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:53 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:53 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:53 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:53 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:53 INFO OracleAlgo: Job Setup completed.
+** Training model in OracleAlgo **
+20/04/23 17:01:53 INFO TextDataConvertor: Dataset: ...aw_librec/exp00000/result/out-1.txt
+20/04/23 17:01:53 INFO TextDataConvertor: All dataset files [raw_librec\exp00000\result\out-1.txt]
+20/04/23 17:01:53 INFO TextDataConvertor: All dataset files size 2430661
+20/04/23 17:01:53 INFO TextDataConvertor: Now loading dataset file out-1
+20/04/23 17:01:54 INFO OracleAlgo: Job Train completed.
+20/04/23 17:01:54 INFO OracleAlgo: Job End.
+20/04/23 17:01:54 INFO RecommenderJob: Evaluator info:RMSEEvaluator is 1.5069346329268491
+20/04/23 17:01:54 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:54 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:54 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:54 INFO OracleAlgo: Job Setup completed.
+** Training model in OracleAlgo **
+20/04/23 17:01:54 INFO TextDataConvertor: Dataset: ...aw_librec/exp00000/result/out-2.txt
+20/04/23 17:01:54 INFO TextDataConvertor: All dataset files [raw_librec\exp00000\result\out-2.txt]
+20/04/23 17:01:54 INFO TextDataConvertor: All dataset files size 2382786
+20/04/23 17:01:54 INFO TextDataConvertor: Now loading dataset file out-2
+20/04/23 17:01:54 INFO OracleAlgo: Job Train completed.
+20/04/23 17:01:54 INFO OracleAlgo: Job End.
+20/04/23 17:01:54 INFO RecommenderJob: Evaluator info:RMSEEvaluator is 1.6680259449539796
+20/04/23 17:01:55 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:55 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:55 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:55 INFO OracleAlgo: Job Setup completed.
+** Training model in OracleAlgo **
+20/04/23 17:01:55 INFO TextDataConvertor: Dataset: ...aw_librec/exp00000/result/out-3.txt
+20/04/23 17:01:55 INFO TextDataConvertor: All dataset files [raw_librec\exp00000\result\out-3.txt]
+20/04/23 17:01:55 INFO TextDataConvertor: All dataset files size 2447203
+20/04/23 17:01:55 INFO TextDataConvertor: Now loading dataset file out-3
+20/04/23 17:01:55 INFO OracleAlgo: Job Train completed.
+20/04/23 17:01:55 INFO OracleAlgo: Job End.
+20/04/23 17:01:55 INFO RecommenderJob: Evaluator info:RMSEEvaluator is 0.620439444409045
+20/04/23 17:01:55 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:55 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:55 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:55 INFO OracleAlgo: Job Setup completed.
+** Training model in OracleAlgo **
+20/04/23 17:01:55 INFO TextDataConvertor: Dataset: ...aw_librec/exp00000/result/out-4.txt
+20/04/23 17:01:55 INFO TextDataConvertor: All dataset files [raw_librec\exp00000\result\out-4.txt]
+20/04/23 17:01:55 INFO TextDataConvertor: All dataset files size 2443820
+20/04/23 17:01:55 INFO TextDataConvertor: Now loading dataset file out-4
+20/04/23 17:01:56 INFO OracleAlgo: Job Train completed.
+20/04/23 17:01:56 INFO OracleAlgo: Job End.
+20/04/23 17:01:56 INFO RecommenderJob: Evaluator info:RMSEEvaluator is 0.6602990845352265
+20/04/23 17:01:56 INFO TextDataModel: Split data to train Set and test Set successfully!
+20/04/23 17:01:56 INFO TextDataModel: Data size of training is 199084
+20/04/23 17:01:56 INFO TextDataModel: Data size of testing is 49771
+20/04/23 17:01:56 INFO OracleAlgo: Job Setup completed.
+** Training model in OracleAlgo **
+20/04/23 17:01:56 INFO TextDataConvertor: Dataset: ...aw_librec/exp00000/result/out-5.txt
+20/04/23 17:01:56 INFO TextDataConvertor: All dataset files [raw_librec\exp00000\result\out-5.txt]
+20/04/23 17:01:56 INFO TextDataConvertor: All dataset files size 2472176
+20/04/23 17:01:56 INFO TextDataConvertor: Now loading dataset file out-5
+20/04/23 17:01:56 INFO OracleAlgo: Job Train completed.
+20/04/23 17:01:56 INFO OracleAlgo: Job End.
+20/04/23 17:01:56 INFO RecommenderJob: Evaluator info:RMSEEvaluator is 0.9475459042795044
+20/04/23 17:01:56 INFO RecommenderJob: Average Evaluation Result of Cross Validation:
+20/04/23 17:01:56 INFO RecommenderJob: Evaluator value:RMSEEvaluator is 1.080649002220921
