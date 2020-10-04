@@ -49,7 +49,7 @@
 	<metric>
 		<ranking>true</ranking>
 		<list-size>10</list-size>
-		<class>net.librec.eval.ranking.StatisticalParityEvaluator,net.librec.eval.ranking.DiscountedProportionalPFairnessEvaluator,net.librec.eval.ranking.ItemCoverageEvaluator,ndcg,recall,precision</class>
+		<class>ndcg,recall,precision</class>
 		<protected-feature>pro</protected-feature>
 	</metric>
 

@@ -4,3 +4,17 @@
 *.properties
 *.log
 out*.txt
+raw_librec/exp00000/.status
+raw_librec/exp00000/.status
+*.png
+*.jpg
+*.properties
+*.html
+raw_librec/exp00000/.status
+raw_librec/exp00000/.status
+
+rerank-path-bug/good/post/**
+rerank-path-bug/bad/post/**
+rerank-path-bug/data/split/**
+
+demo/.DS_Store
