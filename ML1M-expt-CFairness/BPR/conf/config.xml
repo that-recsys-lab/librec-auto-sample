@@ -9,15 +9,15 @@
 	
 	<!-- DATA SECTION -->
 	<data>
-		<data>../ML1M-expt/data</data>
+		<data-dir>../data</data-dir>
 		<format>UIR</format>
 		<data-file format="text">ratings.csv</data-file>
-	</data> 
+	</data>
 	
 	<!-- FEATURES SECTION-->
 	<features>
 		<appender-class>net.librec.data.convertor.appender.UserFeatureAppender</appender-class>
-		<user-feature-file>ML1M_membership_file.csv</user-feature-file>
+		<user-feature-file>ML1M_membership_file2.csv</user-feature-file>
 	</features>
 	
 	<!-- SPLITTER SECTION -->
@@ -67,25 +67,6 @@
 		<script lang="python3" src="system">
 			<script-name>result_graphics.py</script-name>
 			<param name="browser">true</param>
-		</script> 
-
-		<script lang="python3" src="system">
-			<script-name>slack_post.py</script-name>
-			<param name="option">message</param>
-			<param name="channel">la_bot</param>
-			<param name="encrypted_key">../keys/slack-api.enc</param>
-			<param name="message">Experiment complete</param>
-			<param name="password"/>
-		</script> 
-
-		<script lang="python3" src="system">
-			<script-name>slack_post.py</script-name>
-			<param name="option">file</param>
-			<param name="channel">la_bot</param>
-			<param name="encrypted_key">../keys/slack-api.enc</param>
-			<param name="file">post/viz-bar-NormalizedDCG.jpg</param>
-			<param name="message">NDCG for the experiment</param>
-			<param name="password"/>
 		</script> 
 	</post> 
 </librec-auto>
