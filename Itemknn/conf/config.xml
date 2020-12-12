@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!-- Configuration file for LastFM-Experimentation-Analysis on Consumer side fairness on recommendation algos
+	 Expt 05:  Item KNN on LastFM dataset-->
+
+<librec-auto>
+	<random-seed>202001</random-seed>
+	<thread-count>1</thread-count>
+	<library src="system">default-algorithms.xml</library>
+	
+	<!-- DATA SECTION -->
+	<data>
+		<data>../LastFM-expt/data</data>
+		<format>UIR</format>
+		<data-file format="text">ratings.csv</data-file>
+	</data> 
+	
+	<!-- FEATURES SECTION 
+	<features>
+		<appender-class>net.librec.data.convertor.appender.ItemFeatureAppender</appender-class>
+		<item-feature-file>Veena_ML26_membership_file.csv</item-feature-file>
+	</features>-->
+	
+	<!-- SPLITTER SECTION -->
+	<splitter>
+		<model count="3">kcv</model>
+		<dim>userfixed</dim>
+		<ratio>0.8</ratio>
+		<save>true</save>
+	</splitter>
+	
+	<!-- ALGORITHM SECTION -->
+	<!-- Using itemknn for experimentation purposes. -->
+	<alg>
+		<class>itemknn</class>
+		<!-- similarity>cos</similarity>
+		<similarity type="*">item</similarity -->
+		<similarity type="item">
+                        <value>pcc</value>
+        </similarity>
+		<learn-rate>0.01</learn-rate>
+		<iterator-max>100</iterator-max>
+		<neighborhood-size>
+			<value>10</value>
+			<value>20</value>
+			<value>50</value>
+			<value>70</value>
+			<value>100</value>
+			<value>150</value>
+			<value>200</value>
+			<value>250</value>
+			<value>300</value>
+		</neighborhood-size>
+		<shrinkage>
+			<value>1</value>
+			<value>10</value>
+			<value>20</value>
+		</shrinkage>
+	</alg> 
+
+	<!-- METRICS SECTION -->
+	<metric>
+		<ranking>true</ranking>
+		<list-size>10</list-size>
+		<class>ndcg,recall,precision</class>
+	</metric>
+	
+		<!-- POST-PROCESSING SECTION -->
+	<post>
+		<script lang="python3" src="system">
+			<script-name>results_to_csv.py</script-name>
+			<param name="option">all</param>
+		</script> 
+
+		<script lang="python3" src="system">
+			<script-name>result_graphics.py</script-name>
+			<param name="browser">true</param>
+		</script> 
+
+		<script lang="python3" src="system">
+			<script-name>slack_post.py</script-name>
+			<param name="option">message</param>
+			<param name="channel">la_bot</param>
+			<param name="encrypted_key">../keys/slack-api.enc</param>
+			<param name="message">Experiment complete</param>
+			<param name="password"/>
+		</script> 
+
+		<script lang="python3" src="system">
+			<script-name>slack_post.py</script-name>
+			<param name="option">file</param>
+			<param name="channel">la_bot</param>
+			<param name="encrypted_key">../keys/slack-api.enc</param>
+			<param name="file">post/viz-bar-NormalizedDCG.jpg</param>
+			<param name="message">NDCG for the experiment</param>
+			<param name="password"/>
+		</script> 
+	</post> 
+</librec-auto>
